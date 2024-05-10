@@ -5,5 +5,5 @@ export default interface CatImage {
   url: string;
   width: number;
   height: number;
-  breeds: CatBreed[];
+  breeds?: CatBreed[];
 }

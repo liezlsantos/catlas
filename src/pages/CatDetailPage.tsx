@@ -76,7 +76,7 @@ const CatPage: React.FC = () => {
 
       {isLoading && <Loader />}
 
-      {image && <CatImageDetail image={image} />}
+      {image !== undefined && <CatImageDetail image={image} />}
     </div>
   );
 };

@@ -23,6 +23,9 @@ const App: React.FC = () => {
         <Route path="*" element={<Navigate replace to="/404" />} />
       </Route>,
     ),
+    {
+      basename: process.env.PUBLIC_URL,
+    },
   );
   return (
     <SearchContextProvider>
