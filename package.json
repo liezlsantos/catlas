@@ -8,6 +8,7 @@
     "@types/react-bootstrap": "^0.32.36",
     "@types/react-dom": "^18.3.0",
     "bootstrap": "^5.3.3",
+    "gh-pages": "^6.1.1",
     "loadable-image": "^3.2.3",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
@@ -21,7 +22,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,scss,md,json,yml}\" \"!**/dist/**\" \"!**/.next\""
+    "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,scss,md,json,yml}\" \"!**/dist/**\" \"!**/.next\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -55,5 +58,6 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react-bootstrap-typeahead": "^5.1.14",
     "prettier": "^3.2.5"
-  }
+  },
+  "homepage": "."
 }
