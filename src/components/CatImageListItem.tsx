@@ -20,7 +20,9 @@ const CatImageListItem: React.FC<CatImageListItemProps> = ({ image }) => {
             loader={<div className="card-image-placeholder"></div>}
           />
         </Card.Body>
-        <Card.Footer>View details</Card.Footer>
+        <Card.Footer>
+          <small>View details</small>
+        </Card.Footer>
       </Card>
     </Link>
   );

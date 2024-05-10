@@ -4,9 +4,9 @@ import type CatImage from "models/CatImage";
 import { getBreeds, getImages } from "services/cats";
 
 /**
- * Would be nice to choose a pagination limit divisible by 4, 2 and 1 -
- * which are the number of items in a row for xl, md, and xs screen,
- * respectively.
+ * Would be nice to choose a pagination limit that is
+ * divisible by 4, 2 and 1 (the number of items in a row for
+ * xl, md, and xs screen, respectively).
  */
 const PAGE_LIMIT = 8;
 
@@ -16,7 +16,6 @@ interface SearchContextType {
     breedId: string | undefined;
     images: CatImage[];
     totalImagesCount: number | undefined;
-    // hasMore: boolean;
     isLoading: boolean;
     error: string | null;
   };
@@ -31,7 +30,6 @@ export const SearchContext = createContext<SearchContextType>({
     breedId: undefined,
     images: [],
     totalImagesCount: undefined,
-    // hasMore: false,
     isLoading: false,
     error: null,
   },
@@ -51,7 +49,6 @@ export const SearchContextProvider: React.FC<SearchContextProviderProps> = ({
   const [breedId, setBreedId] = useState<string | undefined>();
   const [images, setImages] = useState<CatImage[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
-  // const [hasMore, setHasMore] = useState(false);
   const [totalImagesCount, setTotalImagesCount] = useState<number>();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -85,7 +82,6 @@ export const SearchContextProvider: React.FC<SearchContextProviderProps> = ({
       try {
         const listData = await getImages(breedId, currentPage, PAGE_LIMIT);
         const { images: imageList, totalCount } = listData;
-        // setHasMore(imageList.length  + images.length === totalCount );
         setTotalImagesCount(totalCount);
         setImages((prev) => [...prev, ...imageList]);
       } catch (e) {
@@ -100,8 +96,8 @@ export const SearchContextProvider: React.FC<SearchContextProviderProps> = ({
 
   const search = (breedId: string) => {
     setBreedId(breedId);
+    setTotalImagesCount(undefined);
     setImages([]);
-    // setHasMore(false);
     setCurrentPage(0);
   };
 
@@ -116,7 +112,6 @@ export const SearchContextProvider: React.FC<SearchContextProviderProps> = ({
           breeds,
           breedId,
           images,
-          // hasMore,
           totalImagesCount,
           isLoading,
           error,

@@ -14,7 +14,7 @@ const CatImagesList: React.FC<CatImagesListProps> = ({ images }) => {
       <Row>
         {images.map((image) => (
           <Col key={image.id} xl={3} md={6} sm={12} className="m-10">
-            <CatImageListItem image={image}></CatImageListItem>
+            <CatImageListItem image={image} />
           </Col>
         ))}
       </Row>

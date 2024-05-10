@@ -14,7 +14,7 @@ const Header: React.FC = () => (
               height={40}
               alt="Logo"
               className="header-logo-img"
-            ></img>
+            />
           </Link>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import type CatBreed from "./CatBreed";
+import type CatBreed from "models/CatBreed";
 
 export default interface CatImage {
   id: string;

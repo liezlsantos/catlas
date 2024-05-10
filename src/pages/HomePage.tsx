@@ -16,11 +16,12 @@ const HomePage: React.FC = () => {
   const { breeds, images, breedId, totalImagesCount, isLoading, error } = state;
 
   const handleChangeBreed = (selected: Option[]) => {
-    if (selected.length > 0) {
-      const selectedBreed = selected[0] as CatBreed;
-      if (breedId !== selectedBreed.id || error !== null) {
-        search(selectedBreed.id);
-      }
+    if (selected.length === 0) {
+      return;
+    }
+    const selectedBreed = selected[0] as CatBreed;
+    if (breedId !== selectedBreed.id || error !== null) {
+      search(selectedBreed.id);
     }
   };
 
@@ -29,7 +30,7 @@ const HomePage: React.FC = () => {
     return selectedBreed ? [selectedBreed] : undefined;
   }, [breeds, breedId]);
 
-  // allows retrying to retrieve the list of breeds without reloading the page
+  // Allows retrying to retrieve the list of breeds without reloading the page
   const handleTryAgain = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     fetchBreeds();
@@ -58,7 +59,7 @@ const HomePage: React.FC = () => {
               />
             </Form.Group>
           </Col>
-          {images.length > 0 && (
+          {totalImagesCount && (
             <Col xl={8} md={6} sm={12} className="align-self-end text-md-end">
               <small>
                 Showing {images.length} out of {totalImagesCount} images
@@ -83,16 +84,14 @@ const HomePage: React.FC = () => {
         </Alert>
       )}
 
-      <CatImagesList images={images}></CatImagesList>
+      <CatImagesList images={images} />
 
-      {isLoading && <Loader></Loader>}
+      {isLoading && <Loader />}
 
-      {hasMore && (
-        <div className="mb-4">
-          <Button onClick={nextPage} disabled={isLoading}>
-            Load more
-          </Button>
-        </div>
+      {hasMore && !isLoading && (
+        <Button className="mb-4" onClick={nextPage}>
+          Load more
+        </Button>
       )}
 
       {showEndOfList && <div>All available images are displayed.</div>}

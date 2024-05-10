@@ -65,6 +65,7 @@ export const getImage = async (imageId: string): Promise<CatImage> => {
     },
   );
   if (response.status !== 200) {
+    // Catch all 4XX. The Cat API returns 400 for invalid image ID.
     if (response.status >= 400 && response.status <= 500) {
       throw new AppError("Not Found", AppError.CAT_IMAGE_NOT_FOUND);
     }

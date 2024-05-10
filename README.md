@@ -1,6 +1,6 @@
 # CATLAS
 
-CATLAS is a single-page app bootstrap that allows users to search for cat images by breed using [The Cat Api](https://thecatapi.com/). The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CATLAS is a single-page app that allows users to search for cat images by breed using [The Cat Api](https://thecatapi.com/). The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting Started
 

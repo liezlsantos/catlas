@@ -17,10 +17,9 @@ const CatImageDetail: React.FC<CatImageDetailProps> = ({ image }) => {
         <a href={image.url} target="_blank" rel="noreferrer">
           <img
             src={image.url}
-            width="100%"
             alt={breed.name}
-            className="rounded mb-4"
-          ></img>
+            className="rounded mb-4 w-100"
+          />
         </a>
       </Col>
       <Col md={6} sm={12}>
@@ -30,9 +29,7 @@ const CatImageDetail: React.FC<CatImageDetailProps> = ({ image }) => {
           {breed.temperament &&
             breed.temperament
               .split(",")
-              .map((temperament, i) => (
-                <Pill key={i} label={temperament}></Pill>
-              ))}
+              .map((temperament, i) => <Pill key={i} label={temperament} />)}
         </div>
         <div className="pt-4">{breed.description}</div>
       </Col>
