@@ -1,0 +1,28 @@
+.card-item {
+  margin-bottom: 20px;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  .card-body {
+    padding: 0;
+
+    .card-image {
+      width: 100%;
+      height: 240px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    .card-image-placeholder {
+      background: #dddddd;
+      opacity: 0.5;
+    }
+  }
+
+  .card-footer {
+    font-size: 0.9rem;
+  }
+}

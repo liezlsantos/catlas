@@ -1,0 +1,28 @@
+@import "styles/variables.scss";
+
+@import "react-bootstrap-typeahead/css/Typeahead.css";
+@import "react-bootstrap-typeahead/css/Typeahead.bs5.css";
+@import "bootstrap/scss/bootstrap";
+
+.App {
+  padding: 84px 20px 20px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn-link {
+  padding: 0;
+}
+
+a,
+.btn-link {
+  color: $body-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $body-color;
+    text-decoration: underline;
+  }
+}
