@@ -36,7 +36,8 @@ const HomePage: React.FC = () => {
     fetchBreeds();
   };
 
-  const hasMore = totalImagesCount && images.length < totalImagesCount;
+  const hasMore =
+    totalImagesCount !== undefined && images.length < totalImagesCount;
   const showEndOfList =
     error === null && !hasMore && !isLoading && breedId !== undefined;
 
@@ -59,7 +60,7 @@ const HomePage: React.FC = () => {
               />
             </Form.Group>
           </Col>
-          {totalImagesCount && (
+          {totalImagesCount !== undefined && (
             <Col xl={8} md={6} sm={12} className="align-self-end text-md-end">
               <small>
                 Showing {images.length} out of {totalImagesCount} images
@@ -94,7 +95,13 @@ const HomePage: React.FC = () => {
         </Button>
       )}
 
-      {showEndOfList && <div>All available images are displayed.</div>}
+      {showEndOfList && (
+        <div>
+          {totalImagesCount === 0
+            ? "No available images."
+            : "All available images are displayed."}
+        </div>
+      )}
     </div>
   );
 };
