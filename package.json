@@ -21,7 +21,7 @@
   "scripts": {
     "start": "PUBLIC_URL=/ react-scripts start",
     "build": "react-scripts build",
-    "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,scss,md,json,yml}\" \"!**/dist/**\" \"!**/.next\""
+    "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,scss,md,json,yml}\" \"!**/build/**\""
   },
   "eslintConfig": {
     "extends": [
