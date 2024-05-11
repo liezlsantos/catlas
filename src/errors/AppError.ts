@@ -1,6 +1,4 @@
 class AppError extends Error {
-  static CAT_IMAGE_NOT_FOUND = 1001;
-
   private code: number | undefined;
 
   constructor(message: string, code?: number) {

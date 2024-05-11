@@ -1,7 +1,12 @@
 import type CatBreed from "models/CatBreed";
 import type CatImage from "models/CatImage";
 import AppError from "errors/AppError";
+import ErrorCodes from "errors/ErrorCodes";
 
+/**
+ * Get list of breeds
+ * @throws Error
+ */
 export const getBreeds = async (): Promise<CatBreed[]> => {
   const response = await fetch(
     `${process.env.REACT_APP_CAT_API_BASE_URL}/breeds`,
@@ -15,6 +20,10 @@ export const getBreeds = async (): Promise<CatBreed[]> => {
   return breeds;
 };
 
+/**
+ * Get list of images given a specific breed ID
+ * @throws Error
+ */
 export const getImages = async (
   breedId: string,
   page: number,
@@ -47,6 +56,11 @@ export const getImages = async (
   };
 };
 
+/**
+ * Get details of a specific image given its ID
+ * @throws AppError
+ * @throws Error
+ */
 export const getImage = async (imageId: string): Promise<CatImage> => {
   const response = await fetch(
     `${process.env.REACT_APP_CAT_API_BASE_URL}/images/${imageId}`,
@@ -55,7 +69,7 @@ export const getImage = async (imageId: string): Promise<CatImage> => {
   if (response.status !== 200) {
     // The Cat API returns 400 for invalid image ID.
     if (response.status === 400) {
-      throw new AppError("Not Found", AppError.CAT_IMAGE_NOT_FOUND);
+      throw new AppError("Not Found", ErrorCodes.CAT_IMAGE_NOT_FOUND);
     }
     throw new AppError("Could not retrieve image details");
   }
@@ -64,6 +78,11 @@ export const getImage = async (imageId: string): Promise<CatImage> => {
   return image;
 };
 
+/**
+ * Returns the fetch options.
+ * When running on development mode, the `x-api-key`
+ * header will be set based on the env config.
+ */
 function getOptions() {
   const headers = new Headers({
     Accept: "application/json",

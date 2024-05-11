@@ -6,6 +6,7 @@ import Loader from "components/Loader/Loader";
 import CatImageDetail from "components/CatImageDetail/CatImageDetail";
 import type CatImage from "models/CatImage";
 import AppError from "errors/AppError";
+import ErrorCodes from "errors/ErrorCodes";
 import { getImage } from "services/cats";
 import "./CatDetailPage.scss";
 
@@ -36,7 +37,7 @@ const CatPage: React.FC = () => {
       } catch (e) {
         if (
           e instanceof AppError &&
-          e.getCode() === AppError.CAT_IMAGE_NOT_FOUND
+          e.getCode() === ErrorCodes.CAT_IMAGE_NOT_FOUND
         ) {
           navigate("/404");
           return;
