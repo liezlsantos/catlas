@@ -1,5 +1,7 @@
 # CATLAS
 
+<img src="https://liezlsantos.github.io/catlas/logo.png?v1" width="250">
+
 CATLAS is a single-page app that allows users to search for cat images by breed using [The Cat API](https://thecatapi.com/). The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Live App
@@ -18,7 +20,7 @@ The app is deployed on GitHub pages and can be accessed here: https://liezlsanto
 
 Copy `.env.example` to `.env`. Update the file accordingly:
 
-**[Option 1] Connect the app directly to The CAT API**
+**Option 1: Connect the app directly to The CAT API**
 
 ```
 REACT_APP_CAT_API_BASE_URL="https://api.thecatapi.com/v1"
@@ -28,7 +30,8 @@ REACT_APP_CAT_API_KEY={valid API KEY}
 On dev mode, you can provide a valid API key retrieved from [The Cat API](https://thecatapi.com/) to
 connect directly to https://api.thecatapi.com/v1. However, this will expose your API key to the client so must only be done on development mode. If you don't provide a valid key, the app will still work but can only display up to 10 images at random.
 
-**[Option 2] Run the proxy service**
+**Option 2: Run the proxy service**
+
 Otherwise, you can run the proxy service at [CATLAS API](https://github.com/liezlsantos/catlas-api).
 By default the proxy runs on http://localhost:3001 so no changes for `.env` file is required.
 

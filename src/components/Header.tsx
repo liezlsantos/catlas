@@ -12,7 +12,7 @@ const Header: React.FC = () => {
             <Link to="/">
               <img
                 src={`${process.env.PUBLIC_URL}/logo.png`}
-                height={40}
+                height={34}
                 alt="Logo"
                 className="header-logo-img"
               />
