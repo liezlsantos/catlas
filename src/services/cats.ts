@@ -5,11 +5,7 @@ import AppError from "errors/AppError";
 export const getBreeds = async (): Promise<CatBreed[]> => {
   const response = await fetch(
     `${process.env.REACT_APP_CAT_API_BASE_URL}/breeds`,
-    {
-      headers: {
-        "x-api-key": process.env.REACT_APP_CAT_API_KEY ?? "",
-      },
-    },
+    getOptions(),
   );
   if (response.status !== 200) {
     throw Error("Could not retrieve list of breeds");
@@ -26,7 +22,7 @@ export const getImages = async (
   order: "ASC" | "DESC" | "RAND" = "ASC",
 ): Promise<{
   images: CatImage[];
-  totalCount: number;
+  totalCount: number | undefined;
 }> => {
   const params = new URLSearchParams();
   params.append("breed_id", breedId);
@@ -36,11 +32,7 @@ export const getImages = async (
 
   const response = await fetch(
     `${process.env.REACT_APP_CAT_API_BASE_URL}/images/search?${params.toString()}`,
-    {
-      headers: {
-        "x-api-key": process.env.REACT_APP_CAT_API_KEY ?? "",
-      },
-    },
+    getOptions(),
   );
 
   if (response.status !== 200) {
@@ -48,21 +40,17 @@ export const getImages = async (
   }
 
   const images = (await response.json()) as CatImage[];
-  const total = response.headers.get("Pagination-Count")!;
+  const total = response.headers.get("Pagination-Count");
   return {
     images,
-    totalCount: parseInt(total),
+    totalCount: total ? parseInt(total) : undefined,
   };
 };
 
 export const getImage = async (imageId: string): Promise<CatImage> => {
   const response = await fetch(
     `${process.env.REACT_APP_CAT_API_BASE_URL}/images/${imageId}`,
-    {
-      headers: {
-        "x-api-key": process.env.REACT_APP_CAT_API_KEY ?? "",
-      },
-    },
+    getOptions(),
   );
   if (response.status !== 200) {
     // Catch all 4XX. The Cat API returns 400 for invalid image ID.
@@ -75,3 +63,15 @@ export const getImage = async (imageId: string): Promise<CatImage> => {
   const image = (await response.json()) as CatImage;
   return image;
 };
+
+function getOptions() {
+  const headers = new Headers({
+    Accept: "application/json",
+  });
+
+  if (process.env.NODE_ENV === "development") {
+    headers.set("x-api-key", process.env.REACT_APP_CAT_API_KEY ?? "");
+  }
+
+  return { headers };
+}

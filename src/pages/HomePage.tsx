@@ -36,10 +36,14 @@ const HomePage: React.FC = () => {
     fetchBreeds();
   };
 
-  const hasMore =
-    totalImagesCount !== undefined && images.length < totalImagesCount;
-  const showEndOfList =
-    error === null && !hasMore && !isLoading && breedId !== undefined;
+  let hasMore = false;
+  let showEndOfList = false;
+  const hasError = error !== null;
+  if (totalImagesCount !== undefined) {
+    hasMore = images.length < totalImagesCount;
+    showEndOfList =
+      !hasError && !hasMore && !isLoading && breedId !== undefined;
+  }
 
   return (
     <div className="page-container">
@@ -70,7 +74,7 @@ const HomePage: React.FC = () => {
         </Row>
       )}
 
-      {error !== null && (
+      {hasError && (
         <Alert
           variant="danger"
           dismissible={breeds.length > 0}
