@@ -19,10 +19,12 @@ The app is deployed on GitHub pages and can be accessed here: https://liezlsanto
 Copy `.env.example` to `.env`. Update the file accordingly:
 
 **[Option 1] Connect the app directly to The CAT API**
+
 ```
 REACT_APP_CAT_API_BASE_URL="https://api.thecatapi.com/v1"
 REACT_APP_CAT_API_KEY={valid API KEY}
 ```
+
 On dev mode, you can provide a valid API key retrieved from [The Cat API](https://thecatapi.com/) to
 connect directly to https://api.thecatapi.com/v1. However, this will expose your API key to the client so must only be done on development mode. If you don't provide a valid key, the app will still work but can only display up to 10 images at random.
 
@@ -31,6 +33,7 @@ Otherwise, you can run the proxy service at [CATLAS API](https://github.com/liez
 By default the proxy runs on http://localhost:3001 so no changes for `.env` file is required.
 
 #### Steps
+
 1. Run `npm install` to install dependencies.
 2. Run `npm start`. This will run the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it on the browser.
 

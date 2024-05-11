@@ -65,7 +65,12 @@ const HomePage: React.FC = () => {
             </Form.Group>
           </Col>
           {totalImagesCount !== undefined && (
-            <Col xl={8} md={6} sm={12} className="align-self-end text-md-end">
+            <Col
+              xl={8}
+              md={6}
+              sm={12}
+              className="align-self-end mt-2 text-md-end"
+            >
               <small>
                 Showing {images.length} out of {totalImagesCount} images
               </small>
