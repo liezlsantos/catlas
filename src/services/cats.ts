@@ -53,8 +53,8 @@ export const getImage = async (imageId: string): Promise<CatImage> => {
     getOptions(),
   );
   if (response.status !== 200) {
-    // The Cat API returns 400 for invalid image ID but let's just catch 404 as well.
-    if (response.status === 400 || response.status === 404) {
+    // The Cat API returns 400 for invalid image ID.
+    if (response.status === 400) {
       throw new AppError("Not Found", AppError.CAT_IMAGE_NOT_FOUND);
     }
     throw new AppError("Could not retrieve image details");

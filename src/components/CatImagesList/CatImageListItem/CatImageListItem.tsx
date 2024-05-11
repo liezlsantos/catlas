@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { AsyncImage } from "loadable-image";
 import CatImage from "models/CatImage";
-import "styles/CatImageListItem.scss";
+import "./CatImageListItem.scss";
 
 interface CatImageListItemProps {
   image: CatImage;
@@ -12,7 +12,7 @@ interface CatImageListItemProps {
 const CatImageListItem: React.FC<CatImageListItemProps> = ({ image }) => {
   return (
     <Link to={`/cats/${image.id}`}>
-      <Card className="my-10 card-item">
+      <Card className="card-item">
         <Card.Body>
           <AsyncImage
             src={image.url}

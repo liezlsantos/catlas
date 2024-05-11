@@ -6,10 +6,11 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { Typeahead } from "react-bootstrap-typeahead";
 import type { Option } from "react-bootstrap-typeahead/types/types";
-import Loader from "components/Loader";
-import CatImagesList from "components/CatImagesList";
+import Loader from "components/Loader/Loader";
+import CatImagesList from "components/CatImagesList/CatImagesList";
 import SearchContext from "context/SearchContext";
 import type CatBreed from "models/CatBreed";
+import "./HomePage.scss";
 
 const HomePage: React.FC = () => {
   const { state, search, nextPage, fetchBreeds } = useContext(SearchContext);
@@ -46,7 +47,7 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="page-container">
+    <div className="home-page">
       {breeds.length > 0 && (
         <Row>
           <Col xl={4} md={6} sm={12}>
@@ -65,14 +66,9 @@ const HomePage: React.FC = () => {
             </Form.Group>
           </Col>
           {totalImagesCount !== undefined && (
-            <Col
-              xl={8}
-              md={6}
-              sm={12}
-              className="align-self-end mt-2 text-md-end"
-            >
+            <Col xl={8} md={6} sm={12} className="count-status-text">
               <small>
-                Showing {images.length} out of {totalImagesCount} images
+                Showing {images.length} out of {totalImagesCount} image(s)
               </small>
             </Col>
           )}
@@ -83,7 +79,7 @@ const HomePage: React.FC = () => {
         <Alert
           variant="danger"
           dismissible={breeds.length > 0}
-          className="my-4"
+          className="error-banner"
         >
           <div>{error}</div>
           {breeds.length === 0 && (
@@ -98,11 +94,7 @@ const HomePage: React.FC = () => {
 
       {isLoading && <Loader />}
 
-      {hasMore && !isLoading && (
-        <Button className="mb-4" onClick={nextPage}>
-          Load more
-        </Button>
-      )}
+      {hasMore && !isLoading && <Button onClick={nextPage}>Load more</Button>}
 
       {showEndOfList && (
         <div>

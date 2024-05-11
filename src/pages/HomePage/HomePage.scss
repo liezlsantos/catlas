@@ -1,0 +1,12 @@
+.home-page {
+  .count-status-text {
+    align-self: self-end;
+    margin-top: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .count-status-text {
+      text-align: right;
+    }
+  }
+}

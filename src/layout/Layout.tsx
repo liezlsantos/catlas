@@ -1,11 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "components/Header";
-import Footer from "components/Footer";
 import Container from "react-bootstrap/Container";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+import "./Layout.scss";
 
 const Layout: React.FC = () => (
-  <Container className="App">
+  <Container className="app">
     <Header />
     <Outlet />
     <Footer />

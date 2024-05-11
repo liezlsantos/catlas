@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Loader from "components/Loader";
-import CatImageDetail from "components/CatImageDetail";
+import Loader from "components/Loader/Loader";
+import CatImageDetail from "components/CatImageDetail/CatImageDetail";
 import type CatImage from "models/CatImage";
 import AppError from "errors/AppError";
 import { getImage } from "services/cats";
+import "./CatDetailPage.scss";
 
 type CatPageParams = {
   id: string;
@@ -55,9 +56,9 @@ const CatPage: React.FC = () => {
   const displayError = error !== null && image === undefined;
 
   return (
-    <div className="page-container">
+    <div className="cat-detail-page">
       {(image !== undefined || error !== null) && (
-        <div className="pb-4">
+        <div className="nav-link">
           {hasNavigatedInApp ? (
             <Button variant="link" onClick={handleGoToHome}>
               Back
@@ -69,7 +70,7 @@ const CatPage: React.FC = () => {
       )}
 
       {displayError && (
-        <Alert variant="danger" className="my-2">
+        <Alert variant="danger" className="error-banner">
           {error}
         </Alert>
       )}

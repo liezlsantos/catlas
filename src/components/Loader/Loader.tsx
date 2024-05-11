@@ -1,8 +1,9 @@
 import React from "react";
 import Spinner from "react-bootstrap/Spinner";
+import "./Loader.scss";
 
 const Loader: React.FC = () => (
-  <div className="my-4 loader d-flex flex-column justify-content-center align-items-center">
+  <div className="loader">
     <div>
       <Spinner animation="border" role="status"></Spinner>
     </div>

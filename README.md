@@ -46,6 +46,10 @@ By default the proxy runs on http://localhost:3001 so no changes for `.env` file
 
 Format files using `prettier`.
 
+#### `npm run test`
+
+Run tests.
+
 #### `npm run build`
 
 Builds the app for production to the `build` folder.

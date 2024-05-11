@@ -4,14 +4,6 @@
 @import "react-bootstrap-typeahead/css/Typeahead.bs5.css";
 @import "bootstrap/scss/bootstrap";
 
-.App {
-  padding: 84px 20px 20px;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .btn-link {
   padding: 0;
 }
@@ -25,4 +17,8 @@ a,
     color: $body-color;
     text-decoration: underline;
   }
+}
+
+.error-banner {
+  margin: 16px 0;
 }
