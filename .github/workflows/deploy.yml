@@ -34,6 +34,8 @@ jobs:
         run: |
           touch .env
           echo REACT_APP_CAT_API_BASE_URL=${{ vars.REACT_APP_CAT_API_BASE_URL }} >> .env
+      - name: test
+        run: npm run test-ci
       - name: Build
         run: npm run build
       # serve the app's custom 404 page instead of Pages'
@@ -45,6 +47,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./build"
+
   deploy:
     environment:
       name: github-pages

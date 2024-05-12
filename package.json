@@ -26,6 +26,7 @@
     "start": "PUBLIC_URL=/ react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-ci": "react-scripts test --watchAll=false",
     "format": "npx prettier --write \"**/*.{js,jsx,ts,tsx,scss,md,json,yml}\" \"!**/build/**\""
   },
   "eslintConfig": {

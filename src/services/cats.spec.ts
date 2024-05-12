@@ -1,7 +1,7 @@
-import { getBreeds, getImages, getImage } from "services/cats";
+import { getBreeds, getImages, getImage } from "./cats";
 import AppError from "errors/AppError";
 
-describe("Cat API service", () => {
+describe("Cats API service", () => {
   const breed = {
     id: "abc",
     name: "Test",
